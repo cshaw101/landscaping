@@ -1,10 +1,11 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { MantineProvider } from '@mantine/core';
 import Header from './components/Header'; // Ensure this path is correct
-import Hero from './components/Hero'; // Import the Hero component
+import Hero from './components/Hero'; // Import your Hero component
 import { Container } from '@mui/material';
 
-// Create a custom theme with your color palette and typography
+// Create a custom Material-UI theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,32 +24,34 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: '2.5rem', // Increase size for h1
+      fontSize: '2.5rem',
     },
     h2: {
-      fontSize: '2rem', // Increase size for h2
+      fontSize: '2rem',
     },
     h3: {
-      fontSize: '1.75rem', // Increase size for h3
+      fontSize: '1.75rem',
     },
     body1: {
-      fontSize: '1.2rem', // Increase size for body text
+      fontSize: '1.2rem',
     },
     button: {
-      fontSize: '1rem', // Increase size for button text
+      fontSize: '1rem',
     },
   },
 });
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Hero /> {/* Add the Hero component here */}
-      <Container maxWidth="lg">
-        {/* Other sections will go here later */}
-      </Container>
-    </ThemeProvider>
+    <MantineProvider theme={{ colorScheme: 'light' }}>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Hero />
+        <Container maxWidth="lg">
+          {/* Other sections will go here later */}
+        </Container>
+      </ThemeProvider>
+    </MantineProvider>
   );
 }
 
