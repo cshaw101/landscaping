@@ -55,7 +55,7 @@ const Hero = () => {
       </Typography>
       {/* Use Material-UI Button with the same styles as the navbar */}
       <a 
-        href="mailto:shawdevelopment101@gmail.com?subject=Website Inquiry&body=Hello,%0D%0AI'm interested in your landscaping services." 
+        href="mailto:shawdevelopment101@gmail.com?subject=Website Inquiry&body=Hello,%0D%0AI'm interested in your Website Creation services." 
         style={{ textDecoration: 'none' }} // Remove underline from link
       >
         <Button 

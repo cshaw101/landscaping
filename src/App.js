@@ -4,8 +4,8 @@ import { MantineProvider } from '@mantine/core';
 import Header from './components/Header'; // Ensure this path is correct
 import Hero from './components/Hero'; // Import your Hero component
 import { Container } from '@mui/material';
+import Services from './components/Services';
 
-// Create a custom Material-UI theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -18,28 +18,30 @@ const theme = createTheme({
       default: '#FFF8E1', // Cream
     },
     text: {
-      primary: '#333333', // Charcoal Gray for primary text
-      secondary: '#B0BEC5', // Stone Gray for secondary text
+      primary: '#333333',
+      secondary: '#B0BEC5',
     },
   },
   typography: {
+    fontSize: 18, // Increased global font size
     h1: {
-      fontSize: '2.5rem',
+      fontSize: '2.8rem',
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: '2.4rem',
     },
     h3: {
-      fontSize: '1.75rem',
+      fontSize: '2rem',
     },
     body1: {
-      fontSize: '1.2rem',
+      fontSize: '1.3rem',
     },
     button: {
-      fontSize: '1rem',
+      fontSize: '1.1rem',
     },
   },
 });
+
 
 function App() {
   return (
@@ -48,7 +50,7 @@ function App() {
         <Header />
         <Hero />
         <Container maxWidth="lg">
-          {/* Other sections will go here later */}
+         <Services />
         </Container>
       </ThemeProvider>
     </MantineProvider>
