@@ -1,63 +1,52 @@
-// Header.js
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Group, Burger, Container, Drawer } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import classes from './Header.module.css';
+
+const links = [
+  { link: '/', label: 'Home' },
+  { link: '/services', label: 'Services' },
+  { link: '/about', label: 'About Us' },
+  { link: '/contact', label: 'Contact' },
+];
 
 const Header = () => {
-  const theme = useTheme();
+  const [opened, { toggle, close }] = useDisclosure(false);
+
+  const items = links.map((link) => (
+    <Link
+      key={link.label}
+      to={link.link}
+      className={classes.link}
+      onClick={close} // Close the menu when a link is clicked
+    >
+      {link.label}
+    </Link>
+  ));
 
   return (
-    <AppBar 
-      position="static" 
-      sx={{ 
-        backgroundColor: theme.palette.primary.main,
-        paddingY: 1, // Add padding to increase navbar height
-      }}
-    >
-      <Container>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{
-              flexGrow: 1,
-              fontWeight: 'bold',
-              fontSize: '1.8rem', // Adjust font size directly if needed
-              color: 'white',
-            }}
-          >
-            Landscaping Co.
-          </Typography>
-          <Button color="inherit" sx={{ fontSize: '1.1rem', marginLeft: 2 }}>
-            Home
-          </Button>
-          <Button color="inherit" sx={{ fontSize: '1.1rem', marginLeft: 2 }}>
-            Services
-          </Button>
-          <Button color="inherit" sx={{ fontSize: '1.1rem', marginLeft: 2 }}>
-            About Us
-          </Button>
-          <Button color="inherit" sx={{ fontSize: '1.1rem', marginLeft: 2 }}>
-            Contact
-          </Button>
-          <a 
-            href="mailto:shawdevelopment101@gmail.com?subject=Website Inquiry&body=Hello,%0D%0AI'm interested Website Design Services." 
-            style={{ textDecoration: 'none' }}
-          >
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={{
-                fontSize: '1.1rem',
-                marginLeft: 2,
-                paddingX: 2, // Increase padding for a larger button
-              }}
-            >
-              Get Started
-            </Button>
-          </a>
-        </Toolbar>
+    <header className={classes.header}>
+      <Container size="md">
+        <div className={classes.inner}>
+          <h1>My Landscaping Site</h1>
+          <Group gap={5} visibleFrom="sm">
+            {items}
+          </Group>
+          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+        </div>
       </Container>
-    </AppBar>
+
+      <Drawer
+        opened={opened}
+        onClose={close}
+        title="Menu"
+        padding="md"
+        size="md"
+      >
+        {items}
+      </Drawer>
+    </header>
   );
 };
 

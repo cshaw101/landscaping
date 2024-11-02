@@ -29,7 +29,7 @@ const Services = () => {
         px: 2,
         backgroundColor: theme => theme.palette.background.default,
         maxWidth: '1200px',
-        margin: '0 auto',  // Center-aligns the section
+        margin: '0 auto',
       }}
     >
       <Typography
@@ -59,11 +59,12 @@ const Services = () => {
                 padding: 4,
                 borderRadius: '20px',
                 boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.15)',
-                background: `linear-gradient(135deg, ${index % 2 === 0 ? '#6A994E' : '#3A6351'}, #406343)`, // Green gradient for variation
+                background: `linear-gradient(135deg, ${index % 2 === 0 ? '#6A994E' : '#3A6351'}, #406343)`,
                 color: 'white',
-                transition: 'transform 0.3s ease',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'scale(1.05)',
+                  boxShadow: '0px 12px 30px rgba(0, 0, 0, 0.25)', // Increased shadow on hover
                 },
               }}
             >
@@ -99,7 +100,7 @@ const Services = () => {
                     lineHeight: 1.75,
                     fontSize: '1.1rem',
                     color: 'white',
-                    opacity: 0.85,
+                    opacity: 0.9,
                   }}
                 >
                   {service.description}
